@@ -7,6 +7,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
+      format.json { render :json => @posts }
     end
   end
 
@@ -18,6 +19,8 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @post }
+      format.json { render :json => @post }
+      
     end
   end
 
@@ -29,6 +32,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @post }
+      format.json { render :json => @post}
     end
   end
 
@@ -47,9 +51,11 @@ class PostsController < ApplicationController
         flash[:notice] = 'Post was successfully created.'
         format.html { redirect_to(@post) }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
+        format.json { render :json => @post}
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
+        format.json { render :json => @post.errors}
       end
     end
   end
