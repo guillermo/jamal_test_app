@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  protect_from_forgery :only => []
   # GET /posts
   # GET /posts.xml
   def index
